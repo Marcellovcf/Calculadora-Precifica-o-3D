@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Precificação 3D</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Calculadora de Precificação 3D</h1>
+    <p class="subtitle">Cadastre produtos, calcule custo e preço sugerido (custo x5) e mantenha tudo salvo localmente.</p>
+
+    <section class="card">
+      <h2>Novo produto</h2>
+      <form id="product-form">
+        <div class="grid">
+          <label>
+            Nome do produto
+            <input type="text" id="nome" required placeholder="Ex.: Suporte para fone" />
+          </label>
+
+          <label>
+            Preço do Kg do filamento (R$)
+            <input type="number" id="precoKg" min="0" step="0.01" required placeholder="Ex.: 120" />
+          </label>
+
+          <label>
+            Peso do produto (g)
+            <input type="number" id="peso" min="0" step="0.01" required placeholder="Ex.: 45" />
+          </label>
+
+          <label>
+            Duração (horas)
+            <input type="number" id="horas" min="0" step="1" required placeholder="Ex.: 2" />
+          </label>
+
+          <label>
+            Duração (minutos)
+            <input type="number" id="minutos" min="0" max="59" step="1" required placeholder="Ex.: 30" />
+          </label>
+
+          <label>
+            Imagem do produto
+            <input type="file" id="imagem" accept="image/*" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Adicionar produto</button>
+          <button type="button" id="limpar-tudo" class="danger">Limpar tabela</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="table-header">
+        <h2>Tabela de produtos</h2>
+        <div class="export-actions">
+          <button id="exportar-csv" type="button">Exportar CSV</button>
+          <button id="exportar-pdf" type="button">Exportar PDF (com imagem)</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="products-table">
+          <thead>
+            <tr>
+              <th>Imagem</th>
+              <th>Nome</th>
+              <th>Preço Kg (R$)</th>
+              <th>Peso (g)</th>
+              <th>Duração</th>
+              <th>Custo (R$)</th>
+              <th>Preço sugerido (R$)</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="products-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
